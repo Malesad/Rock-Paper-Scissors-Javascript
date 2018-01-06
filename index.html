@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RockPaperScissors</title>
+</head>
+<body>
+ <script>
+ 	//func randomly selects rock, paper, or scissors
+ 	function computerPlay(){
+ 		var choice = ['rock', 'paper', 'scissors'];
+
+ 		var rand = choice[Math.floor(Math.random() * choice.length)];
+        //console.log(rand);
+ 		return rand;
+ 	}
+ 	//func uses conditions to determine game round winner.
+    function play(playSelect, compSelect){
+              if(playSelect === 'rock' && compSelect === 'rock')
+                  return "It's a tie!";
+              else if(playSelect === 'rock' && compSelect === 'paper')
+                  return "You lose! Paper beats rock.";
+              else if(playSelect === 'rock' && compSelect === 'scissors') 
+                  return "You win! Rock beats scissors.";
+              else if(playSelect === 'paper' && compSelect === 'paper' )
+              	   return "It's a tie!";
+              else if(playSelect === 'paper' && compSelect === 'rock')
+              	   return "You win! Paper beats rock.";
+              else if(playSelect === 'paper' && compSelect === 'scissors')
+              	   return "You lose! Scissors beats paper.";
+              else if(playSelect === 'scissors' && compSelect === 'scissors')
+              	   return "It's a tie!";
+              else if(playSelect === 'scissors' && compSelect === 'paper')
+              	   return "You win! Scissors beats paper.";
+              else if(playSelect === 'scissors' && compSelect === 'rock')
+              	   return "You lose! Rock beats scissors.";
+              else
+              	   return "Invalid option"
+
+
+    }
+    function game(){
+        var cpuScore = 0;
+        var userScore = 0;
+
+        //Rock paper scissors is played five times. 
+    	for (var i = 0; i < 5; i++) {
+
+           console.log("Enter choice (rock,paper, or scissors):");
+    	   var userChoice = prompt().toLowerCase();
+    	  
+    	   var comChoice = computerPlay();
+    	   var output = play(userChoice,comChoice);
+    	   console.log(output);
+    	   
+    	   if(output.includes("lose"))
+    	   	  cpuScore = cpuScore + 1;
+
+    	   if(output.includes("win"))
+    	       userScore = userScore + 1;
+ 
+    	}
+         //The final score is revealed after five games.
+    	 if(cpuScore > userScore)
+          	  console.log("Final Result: You lost :(");
+          if(cpuScore < userScore)
+          	  console.log("Final Result: You win :)");
+          if(cpuScore === userScore)
+          	  console.log("Final Result: It's a tie :/");
+    	
+    }
+         //Run the five round game. 
+         game();
+
+
+ </script>
+</body>
+</html>
